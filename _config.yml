@@ -21,14 +21,14 @@ footer-links:
   email:
   facebook:
   flickr:
-  github: barryclark/jekyll-now
+  github: flarglefingler
   instagram:
   linkedin:
   pinterest:
   rss: # just type anything here for a working RSS icon
   twitter: caoqtrbxl
   stackoverflow: # your stackoverflow profile, e.g. "users/50476/bart-kiers"
-  youtube: user/caoqt # channel/<your_long_string> or user/<user-name>
+  youtube: @caoqt # channel/<your_long_string> or user/<user-name>
   googleplus: # anything in your profile username that comes after plus.google.com/
 
 
