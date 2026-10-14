@@ -7,6 +7,8 @@ tags: zombi github zombiu
 
 ( Apologies for the shitty writing your about to bestow your eyes upon. A lot of this was partially written during late nights, I'll get around to cleaning it up, and also the incessant ramblings)
 
+This will also get fairly technical, if you just want to see the cool shit + notes scroll to the bottom.
+
 ## Intro
 
 ZombiU is a survival horror game released in 2012 as a launch title for the WiiU. The economic disaster that was the WiiU is something we can talk about in another blog post, but for now, I want to focus on ZombiU.
@@ -131,21 +133,14 @@ With all that bullshit out of the way, we ready:
 ## Introducing... zombi-decomp
 
 Introducing **zombi-decomp**, my attempt to reconstruct the latest Steam release of ZOMBI.
+Progress has actually been quite decent. I already have a sizable chunk of the engine + game code already tacked down. I got the physics engine implemented, navigation (like I said earlier, it was just a heavily forked version of Recast, which is open source), I even got UI (UI is done via FIRe, and its essentially just Flash, I forked portions of Ruffle and got it to work). I also got the games proprietary script format also mostly implemented (which is used for some misc mission related things, and also responsible for the laser that Sondra's sniper rifle uses)
 
-Progress so far has been surprisingly good.
-
-Since I currently only have access to macOS, I decided to set some ground rules down (such as no injecting our logic into the actual game, and so on)
-
-With Claude's assistance, It began converting the original shaders to **Metal Shading Language (MSL)**, allowing them to work with Apple's Metal graphics API (which is the performant option on macOS and iOS).
-
-I also wanted to avoid tying the project too closely to a single platform. To make eventual Windows and Linux support less painful, I picked out a few cross-platform libraries early on:
+Claude's assistance has been pretty nice, It converted the original shaders to MSL, which allowed them to work with Apple's Metal graphics API (which is the renderer on macOS and iOS that most things use). While I was at it, I chose some dependencies that would alleviate any future work that would get this running on any platforms besides macOS, that is:
 
 - **SDL3** for window management and input.
 - **FFmpeg**, using a slimmed-down version for BINK support.
 - **Metal** as the initial rendering backend for macOS, with room for other backends in the future.
-
-My idea was to keep the core game/engine logic as platform independent as possible.
-
+- 
 ### What Kind of Decompilation Is This?
 
 Currently, I'd estimate that **roughly 50% of the game has been decompiled or reconstructed**.
@@ -153,7 +148,7 @@ I want to really quick stress that this project is **not intended to be a byte-f
 
 In traditional matching decompilation projects, the goal is often to reconstruct source code that, when compiled with the original toolchain, produces machine code identical (or as close as possible) to the original binary. That's not what I'm aiming for (mainly because we'd be here forever)
 
-Instead, my goal is a **functionally accurate reconstruction**. Pretty much, as long as the resulting code behaves like the original game, I'm happy. I don't really care honestly whether a function has the exact same structure, variable names, or assembly output as the original. What matters is preserving the behavior of the game while making its actual code understandable, maintainable (and eventually, portable) And, ideally, fixing some of the fuckups Ubi left behind along the way.
+Instead, my goal is a **functionally accurate reconstruction**. Pretty much as long as the resulting code behaves like the original game I'm happy. I don't really care honestly whether a function has the exact same structure or assembly output as the original, but rather at least it working identically as it should in the retail game, and later down the line I can start to fix some of the fuckups Ubi left behind along the way.
 
 ### Some Screenshots
 
@@ -164,4 +159,4 @@ Here's the game running so far:
 ![ZOMBI in-game screenshot](../images/zdingame.png)
 
 There's still plenty of work left to do, but progress has been going nicely. Once decompilation is "finished", I plan to put all my current work in a branch simply titled "pc", and then start a new main branch called "enhanced" which I'll put a plethora of bug fixes, features, and more.
-If everything continues at the current pace, I'm hoping to have the full game playable within the next month or so. But shit can change, so who knows 🤷. Stay tuned for more.
+If everything continues at the current pace, I'm hoping to have the full game playable within the next month or so. Until then, the repo will stay private for a bit, but shit can change, so who knows 🤷. Stay tuned for more.
