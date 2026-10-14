@@ -1,7 +1,7 @@
 ---
 layout: post
 title: ZOMBI Decompilation
-description: we decompilin zombi
+description: we decompilin zombi boysss
 tags: zombi github zombiu
 ---
 
@@ -9,12 +9,11 @@ tags: zombi github zombiu
 
 ## Intro
 
-ZombiU is a survival horror game released in 2012 as a launch title for the Wii U. The disaster that was the Wii U is something we can talk about in another blog post, but for now, I want to focus on ZombiU.
+ZombiU is a survival horror game released in 2012 as a launch title for the WiiU. The economic disaster that was the WiiU is something we can talk about in another blog post, but for now, I want to focus on ZombiU.
 
 ![ZombiU cover](../images/zombiucover.jpg)
 
 It was... quite a departure from what Ubisoft was known for making back then.
-
 Set in post-apocalyptic London in 2012, you assume control of a survivor caught in the middle of the "Blight", an infection that turns your average British citizen into a drooling bastard with a hunger for your neck flesh. You must survive the drooling dead while following the instructions of "The Prepper", a mysterious man whose goal is to keep you alive for as long as possible.
 
 One of ZombiU's flagship features was its **Rebirth system**. If you died, you wouldn't simply respawn at a checkpoint. Instead, you'd return as an entirely different survivor (well, the first three aren't random), complete with a randomized name, gender, age, and profession (which all don't really matter but its still a really nice touch and adds atmosphere.) You'd then have to backtrack to where you died and, depending on whether your previous survivor was infected, kill them and recover your belongings.
@@ -150,12 +149,11 @@ My idea was to keep the core game/engine logic as platform independent as possib
 ### What Kind of Decompilation Is This?
 
 Currently, I'd estimate that **roughly 50% of the game has been decompiled or reconstructed**.
-I want to stress something here, though. **This project is not intended to be a byte-for-byte decompilation.**
+I want to really quick stress that this project is **not intended to be a byte-for-byte decompilation.**
 
 In traditional matching decompilation projects, the goal is often to reconstruct source code that, when compiled with the original toolchain, produces machine code identical (or as close as possible) to the original binary. That's not what I'm aiming for (mainly because we'd be here forever)
 
-Instead, my goal is a **functionally accurate reconstruction**.
-As long as the resulting code behaves like the original game, I'm happy. I don't particularly care whether a function has the exact same structure, variable names, or assembly output as Ubisoft's original implementation. What really sorta matters is preserving the behavior of the game while making its actual code understandable, maintainable (and eventually, portable) And, ideally, fixing some of the rather unfortunate issues Ubisoft left behind along the way.
+Instead, my goal is a **functionally accurate reconstruction**. Pretty much, as long as the resulting code behaves like the original game, I'm happy. I don't really care honestly whether a function has the exact same structure, variable names, or assembly output as the original. What matters is preserving the behavior of the game while making its actual code understandable, maintainable (and eventually, portable) And, ideally, fixing some of the fuckups Ubi left behind along the way.
 
 ### Some Screenshots
 
