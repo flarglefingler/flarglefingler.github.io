@@ -1,9 +1,11 @@
 ---
 layout: post
 title: ZOMBI Decompilation
-description: we decompilin' zombi
+description: we decompilin zombi
 tags: zombi github zombiu
 ---
+
+( Apologies for the shitty writing your about to bestow your eyes upon. A lot of this was partially written during late nights, I'll get around to cleaning it up, and also the incessant ramblings)
 
 ## Intro
 
@@ -13,32 +15,26 @@ ZombiU is a survival horror game released in 2012 as a launch title for the Wii 
 
 It was... quite a departure from what Ubisoft was known for making back then.
 
-Set in post-apocalyptic London in 2012, you assume control of a survivor caught in the middle of the "Blight", an infection that turns your average British citizen into... an even more British citizen. You must survive the drooling dead while following the instructions of "The Prepper", a mysterious man whose goal is to keep you alive for as long as possible.
+Set in post-apocalyptic London in 2012, you assume control of a survivor caught in the middle of the "Blight", an infection that turns your average British citizen into a drooling bastard with a hunger for your neck flesh. You must survive the drooling dead while following the instructions of "The Prepper", a mysterious man whose goal is to keep you alive for as long as possible.
 
-One of ZombiU's flagship features was its **Rebirth system**. If you died, you wouldn't simply respawn at a checkpoint. Instead, you'd return as an entirely different survivor (well, the first three aren't random), complete with a randomized name, gender, age, and profession. None of these attributes really matter, but it's a nice touch.
-
-You'd then have to backtrack to where you died and, depending on whether your previous survivor was infected, kill them and recover your belongings.
+One of ZombiU's flagship features was its **Rebirth system**. If you died, you wouldn't simply respawn at a checkpoint. Instead, you'd return as an entirely different survivor (well, the first three aren't random), complete with a randomized name, gender, age, and profession (which all don't really matter but its still a really nice touch and adds atmosphere.) You'd then have to backtrack to where you died and, depending on whether your previous survivor was infected, kill them and recover your belongings.
 
 The game was generally well-received, particularly for its use of the Wii U GamePad. You could use it to manage your inventory, read notes, scan your surroundings, and perform various other actions. Doing so would leave your character vulnerable on the TV, forcing you to constantly divide your attention between two screens. On the other hand, the game was criticized for its repetitive melee combat and somewhat lackluster story, but I digress.
 
-Anyways, in the year of our lord 2015, Ubisoft decided to bring the game to other platforms, with Straight Right handling the porting work. Considering that ZombiU had been exclusive to a console struggling against the Xbox One and PS4, this was a pretty reasonable decision.
+Anyways, in the year of our lord 2015, Ubisoft and Straight Right hugged, kissed, and partnered up to port the game to other platforms. Considering that ZombiU had been exclusive to a console which was absolutely fucking demolished by the XBOne and PS4, seemed like a good decision
+Unfortunately, the ports were... hot ass.
 
-Unfortunately, the ports were... questionable.
+The GamePad mechanics were effectively gutted, with everything being condensed onto a single screen. The multiplayer mode was also removed, and a plethora of bugs were introduced. On the bright side, they added two additional melee weapons, compared to the single cricket bat available in the original WiiU version, which is nice. And while the WiiU version was praised for its unique mechanics, the ports (particularly the PC release) became notorious for their bugs, glitches, and the demon fuckspawn that is the Ubisoft Launcher.
 
-The GamePad mechanics were effectively gutted, with everything being condensed onto a single screen. The multiplayer mode was also removed, and a plethora of bugs were introduced. On the bright side, they added two additional melee weapons, compared to the single cricket bat available in the original Wii U version, which is nice.
-While the Wii U version was praised for its unique mechanics, the ports (particularly the PC release) became notorious for their bugs, glitches, and the demon fuckspawn that is the Ubisoft Launcher.
-
-Ubisoft managed to fuck things up even further during the transition from Uplay to Ubisoft Connect. They eventually released a haphazard patch for the PC version that fixed some of the launcher-related headaches, meaning you could finally play the game without shutting off your wifi. Unfortunately, this update also broke the game's sound-cache system. The first time certain sound effects are triggered, they don't play for some fucking reason, which is cool.
+Ubisoft managed to fuck things up even further during the transition from Uplay to Ubisoft Connect (which caused an issue where you couldn't even launch the damn game.) They eventually released a haphazard patch for the PC version that fixed some of the launcher related headaches, meaning you could finally play the game without shutting off your wifi. Unfortunately, this update also broke the game's sound-cache system, meaning some sounds wouldn't play for some fucking reason.
 
 ## Where That Brings Us Now
 
 ZombiU has always fascinated me, particularly because of the technology behind it.
+The game runs on Ubisoft's **LyN engine**, which evolved from their previous engine, Jade. Unlike LyN, Jade has some documentation (and an entire leaked source repository), making it a useful starting point for understanding LyN.
 
-The game runs on Ubisoft's **LyN engine**, which evolved from their previous engine, Jade. Unlike LyN, Jade has some documentation and a fair bit of publicly available information, making it a useful starting point for understanding its successor.
-
-A few months ago, I decided I wanted to attempt a decompilation of ZOMBI.
-
-I wasn't going in completely blind. I'd already spent some time researching the game's file formats and had previously written a [Python-based archive manager](https://github.com/flarglefingler/ZOMBI-Manager) capable of opening and extracting the game's archives.
+Anyways, a few months ago, I decided I wanted to attempt a decompilation of ZOMBI.
+I wasn't going in completely blind. I'd already spent some time researching the game's file formats and had previously written an [archive manager + blender plugin written in Python](https://github.com/flarglefingler/ZOMBI-Manager), which was capable of opening and extracting the game's `.bfz` files.
 
 Eventually, I decided to take a closer look at the executable itself.
 
