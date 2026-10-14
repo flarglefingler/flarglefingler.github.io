@@ -287,3 +287,146 @@ footer {
 // ... Otherwise it really bloats up the top of the CSS file and makes it difficult to find the start
 @import "highlights";
 @import "svg-icons";
+
+
+/************************/
+/* DARK MODE OVERRIDES  */
+/************************/
+
+$dark-bg: #0d1117;
+$dark-surface: #161b22;
+$dark-border: #30363d;
+$dark-text: #c9d1d9;
+$dark-heading: #e6edf3;
+$dark-muted: #8b949e;
+$dark-link: #58a6ff;
+
+html {
+  background-color: $dark-bg;
+  color-scheme: dark;
+}
+
+body {
+  background-color: $dark-bg;
+  color: $dark-text;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: $dark-heading;
+}
+
+h4 {
+  color: $dark-muted;
+}
+
+a {
+  color: $dark-link;
+
+  &:hover,
+  &:active {
+    color: lighten($dark-link, 10%);
+  }
+}
+
+.site-name {
+  color: $dark-heading;
+}
+
+.site-description,
+.date {
+  color: $dark-muted;
+}
+
+nav a {
+  color: $dark-text;
+
+  &:hover,
+  &:active {
+    color: $dark-link;
+  }
+
+  @include mobile {
+    color: $dark-link;
+  }
+}
+
+.masthead,
+.posts > .post {
+  border-color: $dark-border;
+}
+
+.post {
+  blockquote {
+    border-left-color: $dark-border;
+    color: $dark-muted;
+  }
+}
+
+.wrapper-footer {
+  background-color: $dark-surface;
+  border-top-color: $dark-border;
+  border-bottom-color: $dark-border;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid $dark-border;
+}
+
+code {
+  color: $dark-heading;
+  background-color: $dark-surface;
+  border-radius: 4px;
+  padding: 0.15em 0.35em;
+}
+
+pre {
+  background-color: $dark-surface;
+  border: 1px solid $dark-border;
+  border-radius: 6px;
+  padding: 16px;
+  overflow-x: auto;
+
+  code {
+    padding: 0;
+    background: transparent;
+    border-radius: 0;
+  }
+}
+
+// Override light syntax highlighting backgrounds.
+// Your _highlights.scss may also need its token colors updated.
+.highlight,
+.highlighter-rouge {
+  background-color: $dark-surface;
+  color: $dark-text;
+}
+
+.highlight pre {
+  background-color: $dark-surface;
+}
+
+table {
+  border-collapse: collapse;
+
+  th,
+  td {
+    border: 1px solid $dark-border;
+    padding: 8px 12px;
+  }
+
+  th {
+    background-color: $dark-surface;
+    color: $dark-heading;
+  }
+}
+
+::selection {
+  background: #264f78;
+  color: #ffffff;
+}
+
+::-moz-selection {
+  background: #264f78;
+  color: #ffffff;
+}
