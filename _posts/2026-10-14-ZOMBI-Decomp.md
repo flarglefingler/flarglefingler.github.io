@@ -37,25 +37,29 @@ The game runs on Ubisoft's **LyN engine**, which evolved from their previous eng
 Anyways, a few months ago, I decided I wanted to attempt a decompilation of ZOMBI.
 I wasn't going in completely blind. I'd already spent some time researching the game's file formats and had previously written an [archive manager + blender plugin written in Python](https://github.com/flarglefingler/ZOMBI-Manager), which was capable of opening and extracting the game's `.bfz` files.
 
-Eventually, I decided to take a closer look at the executable itself.
-
-And, to my surprise, Ubisoft had left behind some pretty interesting stuff.
+Eventually, I decided to take a closer look at the executable itself. Ubisoft had actually left behind some pretty cool stuff, so here's what I found.
 
 ## Scratching the Surface
 
 ### The Engine and Game DLL
 
 The game's executable is `ZOMBI.exe`. It's what you launch to actually play the game (duh).
+What many people might not know is that LyN works a little differently from what you'd expect. 
 
-What many people might not know, however, is that LyN works a little differently from what you'd expect. In some ways, it reminds me of the Source Engine.
-With Source, games such as Half-Life 2 and Counter-Strike: Source can share the same executable, `hl2.exe`. The `-game` command-line argument tells the engine which game's directory and configuration to load.
-LyN follows a somewhat similar principle, although its implementation is different, which I'll talk about in a sec.
+In some ways, it kinda reminded me of the Source Engine.
+With Source, games such as Half-Life 2 and Counter-Strike: Source can share the same executable, `hl2.exe`, which was the engine. 
+Then they'd use a `-game` command-line argument, which told the engine which game's directory and configuration to load.
+LyN follows a somewhat similar principle, although its implementation is different, and which I'll talk about in a sec.
 
 **`ZOMBI.exe` is essentially the engine itself.**
 
-Rather than containing all of the game's logic in one executable, LyN separates much of the game-specific code into another binary. In ZOMBI's case, the executable uses a command-line argument to identify the game DLL it needs to load.
+Rather than containing all of the game's logic in one executable, LyN separates much of the game-specific code into another binary. In ZOMBI's case, the executable (or rather the engine) also used a command line argument to load.
+While in the PC Version, which has that argument "absent" (not entirely, but they rather opted to have it fed to it by itself, the executable's code itself generates its command line argument), in the WiiU version + the demos (The Japanese demo contained the raw Shader files + tools used to compile the shaders), it does exist as a `.txt` named `Cafe_CommandLine`, in it you'll find this
 
-That DLL is called `Rabbids.win32.f.dll`. On other platforms its named similar, such as `Rabbids.orbis.f.prx` on PS4.
+``/linfszda BinCafe /projectid:Rabbids /Region:US /vsync:2``
+The first argument is what points it to the folder containing the game's assets, the second is the project id (which in ZombiU's case is Rabbids, this is also how it uses it to find the game code library, which on the WiiU is `Rabbids_cafe_f.rpl`, and the other two are just a region + vsync settings.
+
+On other platforms, the game code library is called `Rabbids.win32.f.dll` on Windows, `Rabbids.orbis.f.prx` on PS4, and `Rabbids.durango.f.dll` on XBOne.
 
 (Slight note, ZombiU refers to a lot of things as Rabbids, this is a leftover from its previous iteration, Killer Rabbids from Outer Space)
 ### Ubisoft's AI System
