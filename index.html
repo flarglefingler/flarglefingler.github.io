@@ -1,0 +1,25 @@
+---
+layout: default
+---
+
+<header class="home-heading">
+  <h1>Blog</h1>
+</header>
+
+<div class="posts">
+  {% for post in site.posts %}
+    <article class="post-card">
+      <div class="post-card-copy">
+        <p class="post-meta">{{ post.date | date: "%B %e, %Y" }}</p>
+        <h2><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
+        <div class="entry">{{ post.excerpt }}</div>
+        <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read post <span aria-hidden="true">→</span></a>
+      </div>
+      {% if post.thumbnail %}
+      <a class="post-card-image" href="{{ site.baseurl }}{{ post.url }}" aria-label="Read {{ post.title }}">
+        <img src="{{ site.baseurl }}{{ post.thumbnail }}" alt="{{ post.thumbnail_alt }}" loading="lazy">
+      </a>
+      {% endif %}
+    </article>
+  {% endfor %}
+</div>

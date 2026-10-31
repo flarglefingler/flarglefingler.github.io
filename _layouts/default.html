@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.name }} – {{ site.description }}</title>
+
+    {% include meta.html %}
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <script>
+      (() => {
+        try {
+          const theme = localStorage.getItem("caoqt-theme");
+          if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
+        } catch (_) {}
+      })();
+    </script>
+    <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css?v=20261031-5" />
+    <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
+
+    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+  </head>
+
+  <body>
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <div class="site-info">
+            <a class="site-name" href="{{ site.baseurl }}/">{{ site.name }}</a>
+            <p class="site-description">{{ site.description }}</p>
+          </div>
+
+          <nav class="header-nav" aria-label="Main navigation">
+            <a href="{{ site.baseurl }}/">Blog</a>
+            <a href="{{ site.baseurl }}/about">About</a>
+            <button class="theme-toggle" type="button" data-theme-toggle aria-checked="false" role="switch" aria-label="Switch to light theme">
+              <span class="theme-toggle-track" aria-hidden="true"><span class="theme-toggle-thumb"></span></span>
+              <span class="theme-toggle-label">Dark</span>
+            </button>
+          </nav>
+        </header>
+      </div>
+    </div>
+
+    <div id="main" role="main" class="container">
+      {{ content }}
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          <span>© {{ site.time | date: "%Y" }} {{ site.name }}</span>
+          <div class="footer-tools">
+            <nav class="footer-links" aria-label="Social links">
+            {% if site.footer-links.github %}<a href="https://github.com/{{ site.footer-links.github }}">GitHub</a>{% endif %}
+            {% if site.footer-links.twitter %}<a href="https://www.twitter.com/{{ site.footer-links.twitter }}">Twitter</a>{% endif %}
+            {% if site.footer-links.youtube %}<a href="https://www.youtube.com/@{{ site.footer-links.youtube }}">YouTube</a>{% endif %}
+            </nav>
+            <button class="theme-toggle" type="button" data-theme-toggle aria-checked="false" role="switch" aria-label="Switch to light theme">
+              <span class="theme-toggle-track" aria-hidden="true"><span class="theme-toggle-thumb"></span></span>
+              <span class="theme-toggle-label">Dark</span>
+            </button>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <script>
+      (() => {
+        const toggles = document.querySelectorAll("[data-theme-toggle]");
+        const setTheme = (theme) => {
+          document.documentElement.dataset.theme = theme;
+          try { localStorage.setItem("caoqt-theme", theme); } catch (_) {}
+          toggles.forEach((toggle) => {
+            const isLight = theme === "light";
+            toggle.setAttribute("aria-checked", String(isLight));
+            toggle.setAttribute("aria-label", `Switch to ${isLight ? "dark" : "light"} theme`);
+            toggle.querySelector(".theme-toggle-label").textContent = isLight ? "Light" : "Dark";
+          });
+        };
+        const current = document.documentElement.dataset.theme === "light" ? "light" : "dark";
+        setTheme(current);
+        toggles.forEach((toggle) => toggle.addEventListener("click", () => {
+          setTheme(document.documentElement.dataset.theme === "light" ? "dark" : "light");
+        }));
+      })();
+    </script>
+    {% include analytics.html %}
+  </body>
+</html>
