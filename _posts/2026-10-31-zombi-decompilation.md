@@ -1,7 +1,7 @@
 ---
 layout: post
 title: decompiling ZombiU
-description: notes from reverse engineering Ubisoft’s LyN engine and ZOMBI
+description: we decomp'ing babiessss
 tags: zombi zombiu reverse-engineering
 thumbnail: /images/zombiucover.jpg
 thumbnail_alt: ZombiU cover art
@@ -9,23 +9,24 @@ thumbnail_alt: ZombiU cover art
 
 ZombiU was developed by Ubisoft Montpellier and released as a Wii U launch title in 2012. You play as a survivor dropped into a zombie-infested London. You have to scavenge, loot, and survive while a mysterious voice known only as the Prepper guides you. More than once, you try to escape the whole hellhole for good.
 
-One of the game's best ideas is its Rebirth system. When you die, you don't just reload as the same person. You wake up as a different survivor and have to make your way back to where you died. Your old survivor is still out there as a zombie, with all the gear you had on them, so you can try to take them down and get your stuff back. Dying stings, but it also leaves this little story behind in the world.
+One of the game's best mechanics was the Rebirth system. When you die, you don't just respawn, but rather you wake up as a different survivor and have to make your way back to where you died. Your old survivor could either just be laying there, or was an infected zombie, with all the gear you had on them, so you'd have to kill your previous self to get your stuff back.
 
-ZombiU also made great use of the Wii U GamePad. It worked as your backpack and inventory, and you used it for things like the scanner and map. You had to look down at the controller to manage your stuff while London kept moving around you on the TV. That split attention made even checking your inventory feel risky. The PC port lost that second screen and, honestly, kind of fucked the whole idea. You can put the same information on a regular screen, but it doesn't have the same tension when you don't have to take your eyes off the game world.
+ZombiU also made great use of the Wii U GamePad. It worked as your backpack and inventory, and you used it for things like the scanner and map. The game had the player looking away from the action on the TV down onto the GamePad, distracting you from anything that could sneak up.
 
-The game is a real product of its time. Looking back, the graphics and atmosphere still hold up, but you can tell it is getting older. In 2015, Ubisoft brought the game to PC, PS4, and Xbox One with help from the porting studio Straight Right. The PC version was renamed ZOMBI.
+The game is a real product of its time. Looking back, the graphics and atmosphere still hold up, but you can tell it was starting to show its age. 
+In 2015, Ubisoft and Straight Right (an Australian porting company) got together and  brought the game to PC, PS4, and Xbox One. The ports have been negatively received however for all the horrible bugs that plague the game.
 
 <figure class="article-figure"><img src="{{ site.baseurl }}/images/zombiucover.jpg" alt="ZombiU cover art"><figcaption>ZombiU launched with the Wii U in 2012.</figcaption></figure>
 
-This isn't going to be a deep dive into ZombiU itself. Plenty of people have already made those videos. I want to get into the technical side and share some of the fun things I've learned over the past couple of years. For simplicity, I'll use ZombiU to refer to both versions unless the distinction matters.
+This isn't going to be a deep dive into ZombiU itself. Plenty of people have already made those videos. I want to get into the technical side and share some of the fun things I've learned over the past couple of years. For simplicity, I'll use ZombiU to refer to both versions unless said otherwise. (mainly because they are mostly the exact same)
 
 ## a little about the engine
 
-ZombiU was made with Ubisoft's LyN engine. There isn't a ton of public documentation about LyN, but it powered ZombiU and a bunch of Just Dance games. LyN itself grew out of Ubisoft's Jade engine. Jade has a lot more documentation, including material from a leak a few years ago along with a leaked build of Rayman 4. LyN and Jade share a lot of the same basic file formats and ideas.
+ZombiU was made with Ubisoft's LyN engine. There isn't a ton of public documentation about LyN, but it powered ZombiU and a bunch of Just Dance games among other shit. LyN itself grew out of Ubisoft's previous 'Jade' engine. Jade has a lot more documentation, including material from a leak a few years ago along with a leaked build of Rayman 4 dating back to '05. LyN and Jade share a lot of the same basic file formats and ideas, so that was a nice help.
 
-One thing that helped me reverse engineer the game was learning about its development history. Before it became a zombie game, ZombiU was a very different project about weird green gremlin dudes who vaguely resembled the Rabbids. It was called Attack of the Killer Rabbids from Outer Space. There is E3 footage of it, and you can see how some of the environments look a little like ZombiU concept art.
+Also before it became a zombie game, ZombiU was a very different project about weird green gremlin dudes who vaguely resembled the Raving Rabbids. It was called 'Attack of the Killer Rabbids from Outer Space'. There is E3 footage of it, and you can see how some of the environments look a little like ZombiU concept art.
 
-The game was reworked around E3 2011. At some point, the team seems to have changed direction, brought on new people, and turned it into the post-apocalyptic London game we got in 2012. The Rabbids project is why some of the code and files still use Rabbids names.
+The game was showed off at E3 2011, but afterwards got a major rework. At some point, the team seems to have changed direction, brought on new people (such as Gabrielle Schrager and Antony Johnston), and turned it into the post-apocalyptic London game we got in 2012. The older version is why some of the code and files still refer to the game internally as 'Rabbids'.
 
 ## the game is split in two
 
