@@ -86,7 +86,7 @@ Just Dance 4 was a useful reference because it was also built on LyN and came ou
 
 There are two broad approaches to decompilation. A functionally accurate decompilation recreates what the original program does, without requiring the new code to match line for line. A byte-for-byte decompilation aims to rebuild the exact same binary with the same compiler and settings.
 
-I'm aiming for a functionally accurate reconstruction. The original game is an old 32-bit Windows game from 2012, and its renderer was built around DirectX 9. I've made some changes to get it running on modern hardware, but I keep comparing the results with the original to make sure the behavior stays faithful.
+I ended up aiming for a functionally accurate reconstruction. The original game is an old 32-bit Windows game from 2012 (technically before that), and its renderer was built around DirectX 9. I've made some changes to get it running on modern hardware (Game now runs on x64, and even arm, rendering is also mostly modern, I have it running on macOS using Metal and it works fine :)), but I keep comparing the results with the original to make sure everything is still correct.
 
 Ubisoft games using Jade or LyN weren't necessarily built on one universal engine shared by every team. Teams often copied the engine and developed a separate branch for their game. You can see evidence of that in debug logs and other information left in the game. The emulator logs include internal assertions tied to the ZombiU project, and opening the executable in Ghidra can reveal what compiler was used.
 
@@ -118,9 +118,9 @@ Having the raw shaders is a huge help. I still had to trace how the renderer use
 
 ## where the project is now
 
-I'd say the decompilation is around 80 percent complete. There are still some mission-specific systems I haven't traced. Most missions work, but some don't. The Virucide sequence isn't implemented yet. That's the syringe you can use to kill a zombie while it's grabbing you.
+I'd say the decompilation is around 80% complete. A lot of script and mission related triggers haven't been implemented, I've gone through the game mission by mission (since missions are split by world) and most of them work, just need to work out the rest.
 
-The game builds and runs. Here are a few views from the current build:
+Other than that, the game builds and runs. Here are a few views from the current build:
 
 <div class="article-gallery article-gallery--screens">
 <figure><img src="{{ site.baseurl }}/images/zdmenu.png" alt="ZOMBI main menu running in the decompilation"><figcaption>Main menu</figcaption></figure>
@@ -128,7 +128,7 @@ The game builds and runs. Here are a few views from the current build:
 <figure><img src="{{ site.baseurl }}/images/zdoptions.png" alt="ZOMBI options screen running in the decompilation"><figcaption>Options</figcaption></figure>
 </div>
 
-You can play through the nightmare sequence, reach the safe house, and complete the first two missions. The game currently locks up in the doctor's scene where you're supposed to get the Virucide, because that part isn't working yet. Outside of that, a lot of the game already works.
+You can play through the nightmare sequence, reach the safe house, and complete the first two missions. The game currently stops at the part where the Doctor gives you the Pad Upgrade and Virucide (mainly because his ContainBox doesn't move, and I haven't gotten Virucide or specific zombie grabs finished yet.)
 
 Once the decompilation is finished, we could mod the game, add new modes, or even build weird multiplayer stuff if we wanted. Someone could port it to a web browser for no reason other than that it would be cool. This work is useful for preservation too. Other games built on LyN, including some Rabbids games, might benefit from the same approach. I've tried to keep the engine separate from ZombiU's game-specific code, so parts of it could potentially be reused.
 
