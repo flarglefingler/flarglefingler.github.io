@@ -24,9 +24,19 @@ This isn't going to be a deep dive into ZombiU itself. Plenty of people have alr
 
 ZombiU was made with Ubisoft's LyN engine. There isn't a ton of public documentation about LyN, but it powered ZombiU and a bunch of Just Dance games among other shit. LyN itself grew out of Ubisoft's previous 'Jade' engine. Jade has a lot more documentation, including material from a leak a few years ago along with a leaked build of Rayman 4 dating back to '05. LyN and Jade share a lot of the same basic file formats and ideas, so that was a nice help.
 
-Also before it became a zombie game, ZombiU was a very different project about weird green gremlin dudes who vaguely resembled the Raving Rabbids. It was called 'Attack of the Killer Rabbids from Outer Space'. There is E3 footage of it, and you can see how some of the environments look a little like ZombiU concept art.
+Also, before it became a zombie game, ZombiU was a very different project about weird green gremlin dudes who vaguely resembled the Raving Rabbids. It was called 'Attack of the Killer Rabbids from Outer Space'. There is E3 footage of it, and you can see how some of the environments look a little like ZombiU concept art.
 
-The game was showed off at E3 2011, but afterwards got a major rework. At some point, the team seems to have changed direction, brought on new people (such as Gabrielle Schrager and Antony Johnston), and turned it into the post-apocalyptic London game we got in 2012. The older version is why some of the code and files still refer to the game internally as 'Rabbids'.
+<div class="article-gallery article-gallery--pair">
+<figure><img src="{{ site.baseurl }}/images/killer-rabbids-e3.png" alt="Alley from the 2011 E3 footage of Attack of the Killer Rabbids from Outer Space"><figcaption>The alley in the E3 2011 Killer Rabbids footage.</figcaption></figure>
+<figure><img src="{{ site.baseurl }}/images/zombiu-concept-art.jpg" alt="ZombiU concept art showing a similar London alley"><figcaption>The same alley can also be seen in ZombiU concept art.</figcaption></figure>
+</div>
+
+The game was shown at E3 2011, then got a major rework. Ubisoft brought on writers Gabrielle Schrager and Antony Johnston, and the project became the post-apocalyptic London game we got in 2012. The Killer Rabbids version is why some of the code and files still refer to the game internally as 'Rabbids'.
+
+<div class="article-gallery article-gallery--pair">
+<figure><img src="{{ site.baseurl }}/images/rabbid.jpg" alt="A regular white Rabbid"><figcaption>A regular Rabbid.</figcaption></figure>
+<figure><img src="{{ site.baseurl }}/images/killer-rabbid.jpg" alt="A creepy green Killer Rabbid with sharp teeth"><figcaption>A Killer Rabbid. look at that freaky motherfucker!</figcaption></figure>
+</div>
 
 ## the game is split in two
 
